@@ -1,0 +1,14 @@
+FROM alpine:3.14
+
+RUN apk add --update npm
+
+WORKDIR '/usr/app'
+
+COPY package.json .
+
+RUN npm install
+
+COPY ./public ./public
+COPY ./src ./src
+
+CMD [ "npm", "run", "start" ]

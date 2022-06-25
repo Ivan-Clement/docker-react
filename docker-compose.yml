@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3000:3000
+    volumes:
+      - /usr/app/node_module
+      - ./src:/usr/app/src
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /usr/app/node_modules
+      - ./src:/usr/app/src
+    command: [ "npm", "run", "test" ]
+  #
+  # build:
+  #   build: .
+  #   volumes:
+  #     - ./build:./build
+
+  # nginx:
+  #   image: nginx:1.23.0-alpine
+  #   volumes:
+  #     - ./build:/usr/share/nginx/html:ro
+  #   ports:
+  #     - "8080:80"
