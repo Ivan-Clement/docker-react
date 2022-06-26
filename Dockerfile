@@ -9,4 +9,4 @@ RUN npm run build
 
 FROM nginx:1.23.0-alpine
 COPY --from=builder /usr/app/build /usr/share/nginx/html
-EXPOSE 8080:80
+EXPOSE 80
