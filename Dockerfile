@@ -8,5 +8,5 @@ COPY ./src ./src
 RUN npm run build
 
 FROM nginx:1.23.0-alpine
-COPY --from=builder /usr/app/build /usr/share/nginx/html
 EXPOSE 80
+COPY --from=builder /usr/app/build /usr/share/nginx/html
